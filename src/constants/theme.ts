@@ -1,65 +1,139 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-import '@/global.css';
-
 import { Platform } from 'react-native';
 
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
+export const Palette = {
+  // Brand Base
+  deepNavy: '#0A0F1D',
+  midnightSlate: '#121829',
+  elevatedCard: '#1A2238',
+  cardBorder: '#232D42',
+
+  // Royal Blue Brand Accents
+  royalBlue: '#2563EB',
+  royalBlueDark: '#1D4ED8',
+  royalBlueLight: '#3B82F6',
+  royalBlueGlow: 'rgba(37, 99, 235, 0.18)',
+
+  // Sovereign Gold Highlights
+  gold: '#F59E0B',
+  goldBright: '#FBBF24',
+  goldDark: '#B45309',
+  goldMuted: 'rgba(245, 158, 11, 0.16)',
+
+  // Status & Transaction Colors
+  success: '#10B981',
+  successSurface: 'rgba(16, 185, 129, 0.14)',
+  danger: '#EF4444',
+  dangerSurface: 'rgba(239, 68, 68, 0.14)',
+  warning: '#F59E0B',
+
+  // Neutrals
+  white: '#FFFFFF',
+  textSecondary: '#94A3B8',
+  textMuted: '#64748B',
+  divider: '#1E293B',
 } as const;
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
-
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+export const Colors = {
+  dark: {
+    background: Palette.deepNavy,
+    surface: Palette.midnightSlate,
+    surfaceElevated: Palette.elevatedCard,
+    border: Palette.cardBorder,
+    primary: Palette.royalBlue,
+    primaryPressed: Palette.royalBlueDark,
+    accent: Palette.gold,
+    text: Palette.white,
+    textSecondary: Palette.textSecondary,
+    textMuted: Palette.textMuted,
+    success: Palette.success,
+    danger: Palette.danger,
+    warning: Palette.warning,
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+  light: {
+    background: '#F8FAFC',
+    surface: '#FFFFFF',
+    surfaceElevated: '#F1F5F9',
+    border: '#E2E8F0',
+    primary: Palette.royalBlue,
+    primaryPressed: Palette.royalBlueDark,
+    accent: Palette.goldDark,
+    text: '#0F172A',
+    textSecondary: '#475569',
+    textMuted: '#64748B',
+    success: Palette.success,
+    danger: Palette.danger,
+    warning: Palette.warning,
   },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+} as const;
 
 export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
+  xxs: 2,
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+  xxl: 24,
+  xxxl: 32,
+  huge: 48,
 } as const;
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const Radius = {
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+  xxl: 24,
+  full: 9999,
+} as const;
+
+export const Typography = {
+  titleLarge: {
+    fontSize: 28,
+    fontWeight: '700' as const,
+    color: Palette.white,
+    letterSpacing: -0.5,
+  },
+  titleMedium: {
+    fontSize: 22,
+    fontWeight: '700' as const,
+    color: Palette.white,
+    letterSpacing: -0.3,
+  },
+  titleSmall: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    color: Palette.white,
+  },
+  bodyLarge: {
+    fontSize: 16,
+    fontWeight: '400' as const,
+    color: Palette.white,
+  },
+  bodyMedium: {
+    fontSize: 14,
+    fontWeight: '400' as const,
+    color: Palette.textSecondary,
+  },
+  bodySmall: {
+    fontSize: 12,
+    fontWeight: '400' as const,
+    color: Palette.textMuted,
+  },
+  label: {
+    fontSize: 13,
+    fontWeight: '600' as const,
+    color: Palette.textSecondary,
+    textTransform: 'uppercase' as const,
+    letterSpacing: 0.8,
+  },
+  currency: {
+    fontSize: 32,
+    fontWeight: '800' as const,
+    color: Palette.white,
+    letterSpacing: -0.5,
+  },
+} as const;
+
+export const BottomTabInset = Platform.select({ ios: 50, android: 75 }) ?? 75;
